@@ -1,0 +1,4 @@
+docker run -d --name my-apache-app -p 80:80 httpd:2.4
+docker ps
+docker exec -it my-apache-app /bin/bash
+#edit html index.html file with sed or just echo

@@ -1,0 +1,11 @@
+#create index.php from presentation
+#look at php file, and using phpmyadmin, create necessary table and rows in the db (database dummy with table 'example' for example)
+
+docker run -d --name=db --env MYSQL_ROOT_PASSWORD=my-secret-pw mysql
+docker run -d --name=phpmyadmin --link=db -p 8081:80 --env MYSQL_ROOT_PASSWORD=my-secret-pw  phpmyadmin/phpmyadmin
+
+
+
+#create Dockerfile as in this directory
+docker build -t php:custom .
+docker run -d --name=php --env MYSQL_ROOT_PASSWORD=my-secret-pw --link=db -p 8080:80 php:custom

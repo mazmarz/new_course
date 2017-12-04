@@ -7,7 +7,7 @@ services:
    environment:
      - MYSQL_ROOT_PASSWORD=my-secret-pw
    volumes:
-     - mysql_volume:/var/lib/mysql
+     - /var/lib/mysql
 
  phpmyadmin:
    image: phpmyadmin/phpmyadmin
@@ -30,12 +30,9 @@ services:
      - PMA_HOST=mysql
    depends_on:
      - mysql
-# notes this volume does NOT need to be the same as that used for mysql, but I can name it to eventually share it with other contianers
+# notes this volume does NOT need to be the same as that used for mysql
    volumes:
-     - php:/var/html/htdocs
+     - /var/html/htdocs
 
 
-volumes:
-   mysql_volume:
-   php:
 

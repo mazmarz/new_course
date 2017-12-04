@@ -35,6 +35,7 @@ services:
      - php:/var/html/htdocs
 
 
+# note if you are using named volumes, it is required that it is listed also below
 volumes:
    mysql_volume:
    php:

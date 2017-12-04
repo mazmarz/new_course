@@ -1,0 +1,12 @@
+docker run -d --name gitlab-runner --restart always \
+  -v /srv/gitlab-runner/config:/etc/gitlab-runner \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  gitlab/gitlab-runner:latest
+
+# then register the the runner:
+# <project> -> settings -> CI/CD -> Specific Runners ; for token to register
+# in order to register:
+# docker exec -it gitlab-runner gitlab-runner register ; reference: https://docs.gitlab.com/runner/register/index.html
+
+
+

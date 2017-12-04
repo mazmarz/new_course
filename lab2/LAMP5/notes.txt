@@ -1,0 +1,1 @@
+you need to remove "container_name" from the docker-compose file inorder that it gives the default name, directory + image name, rather than the chosen name

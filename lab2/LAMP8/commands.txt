@@ -1,0 +1,3 @@
+# hub.docker.com/u/mazzucco (login to hub.docker.com) -> settings to link to git
+# create from top menu to setup automatic build
+# Docker builds everything listed whenever a push is made to the code repository.   

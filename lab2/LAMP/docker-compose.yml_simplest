@@ -1,0 +1,19 @@
+version: '2'
+  
+services:
+ db:
+   image: mysql
+   environment:
+     - MYSQL_ROOT_PASSWORD=my-secret-pw
+
+ phpmyadmin:
+   image: phpmyadmin/phpmyadmin
+   ports:
+     - 8080:80
+   environment:
+     - MYSQL_ROOT_PASSWORD=my-secret-pw
+
+ php:
+   image: php:7.1-apache
+   ports:
+     - 80:80

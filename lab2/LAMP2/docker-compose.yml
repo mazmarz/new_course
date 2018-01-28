@@ -7,7 +7,7 @@ services:
    environment:
      - MYSQL_ROOT_PASSWORD=my-secret-pw
    volumes:
-     - /var/lib/mysql
+     - /home/marco/Docker:/var/lib/mysql
 
  phpmyadmin:
    image: phpmyadmin/phpmyadmin

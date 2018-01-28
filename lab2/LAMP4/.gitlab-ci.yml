@@ -1,0 +1,31 @@
+# .gitlab-ci.yml
+
+image: docker
+
+services:
+  - docker:dind
+
+# verifying that login works
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  - docker info
+
+build:
+  script:
+    - docker build -t registry.gitlab.com/mgmazzucco/try-compose/apachephp:custom .
+    - docker push registry.gitlab.com/mgmazzucco/gitlab_example1_dind/apachephp:custom
+
+test:
+  script:
+    - apk add --update py-pip        # <--
+    - pip install docker-compose     # <--
+    - docker pull registry.gitlab.com/mgmazzucco/gitlab_example1_dind/apachephp:custom
+    - docker-compose up -d
+#    - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" $CI_REGISTRY  # <--
+#    - docker build -t registry.gitlab.com/mgmazzucco/test/image . # <--
+#    - docker push registry.gitlab.com/mgmazzucco/test/image # <--
+
+#test:
+#  script:
+#    - docker-compose up -d
+

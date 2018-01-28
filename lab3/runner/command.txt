@@ -7,6 +7,7 @@ docker run -d --name gitlab-runner --restart always \
 # <project> -> settings -> CI/CD -> Specific Runners ; for token to register
 # in order to register:
 # docker exec -it gitlab-runner gitlab-runner register ; reference: https://docs.gitlab.com/runner/register/index.html
+# https://github.com/ayufan/gitlab-ci-multi-runner/blob/master/docs/install/docker.md 
 
 
 

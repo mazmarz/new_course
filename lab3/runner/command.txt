@@ -1,13 +1,18 @@
 docker run -d --name gitlab-runner --restart always \
-  -v /srv/gitlab-runner/config:/etc/gitlab-runner \
-  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /srv/gitlab-runner/config:/etc/gitlab-runner:Z \
+  -v /var/run/docker.sock:/var/run/docker.sock:Z \
   gitlab/gitlab-runner:latest
+
 
 # then register the the runner:
 # <project> -> settings -> CI/CD -> Specific Runners ; for token to register
 # in order to register:
 # docker exec -it gitlab-runner gitlab-runner register ; reference: https://docs.gitlab.com/runner/register/index.html
 # https://github.com/ayufan/gitlab-ci-multi-runner/blob/master/docs/install/docker.md 
+# with SElinux several things to be sorted out:
 
+1) :Z takes cares of selinux permissions on the mounts
+2) Check this out: https://gitlab.com/gitlab-org/gitlab-runner/issues/1261.  The DinD needs to be run as privlaged.  Change this in /srv/gitrunner....
+3) You also have to install an SElinux module!: https://github.com/dpw/selinux-dockersock
 
 
